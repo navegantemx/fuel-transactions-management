@@ -24,7 +24,7 @@ def add_task():
 
 @app.route('/insert_task', methods=['POST'])
 def insert_task():
-    tasks =  mongo.db.tasks
+    tasks = mongo.db.tasks
     tasks.insert_one(request.form.to_dict())
     return redirect(url_for('get_tasks'))
 
