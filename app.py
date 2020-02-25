@@ -24,15 +24,21 @@ def add_task():
 
 @app.route('/insert_task', methods=['POST'])
 def insert_task():
-    tasks = mongo.db.tasks
-    tasks.insert_one(request.form.to_dict())
-    return redirect(url_for('get_tasks'))
+    tasks = mongo.db.tasks.find()
+    task = request.form.to_dict()
+    vehicle = mongo.db.vehicles.find_one({"vehicle_id":task['equipment_id']})
+    if vehicle:
+        mongo.db.tasks.insert_one(task)
+        return redirect(url_for('get_tasks'))
+
+    else:
+        return('vehicle does not exist')
 
 
 @app.route('/edit_task/<task_id>')
 def edit_task(task_id):
     the_task =  mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    all_categories =  mongo.db.categories.find()
+    all_categories = mongo.db.categories.find()
     return render_template('edittask.html', task=the_task,
                            categories=all_categories)
 

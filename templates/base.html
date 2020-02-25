@@ -35,6 +35,7 @@
         $(document).ready(function() {
             $('.collapsible').collapsible();
             $('select').material_select();
+            document.querySelectorAll('.select-wrapper').forEach(t => t.addEventListener('click', e=>e.stopPropagation()))
             $(".button-collapse").sideNav();
         });
         $('.datepicker').pickadate({
@@ -48,6 +49,7 @@
         document.getElementById("matfix").addEventListener("click", function(e) {
             e.stopPropagation();
         });
+        
     </script>
 </body>
 
