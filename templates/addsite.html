@@ -2,12 +2,12 @@
 
 {% block content %}
 <h3>Add Sites</h3>
-<form action="{{ url_for('insert_category') }}" method="POST" class="col s12">
+<form action="{{ url_for('insert_site') }}" method="POST" class="col s12">
     <div class="row">
         <div class="input-field col s12">
             <i class="material-icons prefix">poll</i>
-            <input id="category_name" name="category_name" type="text" class="validate">
-            <label for="category_name">Site Name</label>
+            <input id="site_name" name="site_name" type="text" class="validate">
+            <label for="site_name">Site Name</label>
         </div>
     </div>
     <div class="row">

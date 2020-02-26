@@ -19,7 +19,7 @@ def get_tasks():
 @app.route('/add_task')
 def add_task():
     return render_template('addtask.html',
-                           categories=mongo.db.categories.find())
+                           sites=mongo.db.sites.find())
 
 
 @app.route('/insert_task', methods=['POST'])
@@ -37,10 +37,10 @@ def insert_task():
 
 @app.route('/edit_task/<task_id>')
 def edit_task(task_id):
-    the_task =  mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
-    all_categories = mongo.db.categories.find()
+    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    all_sites = mongo.db.sites.find()
     return render_template('edittask.html', task=the_task,
-                           categories=all_categories)
+                           sites=all_sites)
 
 
 @app.route('/update_task/<task_id>', methods=["POST"])
@@ -51,10 +51,9 @@ def update_task(task_id):
         'pump_number':request.form.get('pump_number'),
         'equipment_id':request.form.get('equipment_id'),
         'employee_id':request.form.get('employee_id'),
-        'category_name':request.form.get('category_name'),
+        'site_name':request.form.get('site_name'),
         'quantity': request.form.get('quantity'),
         'issue_date': request.form.get('issue_date'),
-        # 'is_urgent':request.form.get('is_urgent')
     })
     return redirect(url_for('get_tasks'))
 
@@ -65,42 +64,42 @@ def delete_task(task_id):
     return redirect(url_for('get_tasks'))
 
 
-@app.route('/get_categories')
-def get_categories():
-    return render_template('categories.html',
-                           categories=mongo.db.categories.find())
+@app.route('/get_sites')
+def get_sites():
+    return render_template('sites.html',
+                           sites=mongo.db.sites.find())
 
 
-@app.route('/delete_category/<category_id>')
-def delete_category(category_id):
-    mongo.db.categories.remove({'_id': ObjectId(category_id)})
-    return redirect(url_for('get_categories'))
+@app.route('/delete_site/<site_id>')
+def delete_site(site_id):
+    mongo.db.sites.remove({'_id': ObjectId(site_id)})
+    return redirect(url_for('get_sites'))
 
 
-@app.route('/edit_category/<category_id>')
-def edit_category(category_id):
-    return render_template('editcategory.html',
-    category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
+@app.route('/edit_site/<site_id>')
+def edit_site(site_id):
+    return render_template('editsite.html',
+    site=mongo.db.sites.find_one({'_id': ObjectId(site_id)}))
 
 
-@app.route('/update_category/<category_id>', methods=['POST'])
-def update_category(category_id):
-    mongo.db.categories.update(
-        {'_id': ObjectId(category_id)},
-        {'category_name': request.form.get('category_name')})
-    return redirect(url_for('get_categories'))
+@app.route('/update_site/<site_id>', methods=['POST'])
+def update_site(site_id):
+    mongo.db.sites.update(
+        {'_id': ObjectId(site_id)},
+        {'site_name': request.form.get('site_name')})
+    return redirect(url_for('get_sites'))
 
 
-@app.route('/insert_category', methods=['POST'])
-def insert_category():
-    category_doc = {'category_name': request.form.get('category_name')}
-    mongo.db.categories.insert_one(category_doc)
-    return redirect(url_for('get_categories'))
+@app.route('/insert_site', methods=['POST'])
+def insert_site():
+    site_doc = {'site_name': request.form.get('site_name')}
+    mongo.db.sites.insert_one(site_doc)
+    return redirect(url_for('get_sites'))
 
 
-@app.route('/add_category')
-def add_category():
-    return render_template('addcategory.html')
+@app.route('/add_site')
+def add_site():
+    return render_template('addsite.html')
 
 
 if __name__ == '__main__':
