@@ -5,8 +5,8 @@ from bson.objectid import ObjectId
 
 
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'task_manager'
-app.config["MONGO_URI"] = 'mongodb+srv://NaveganteMx:Dowaine1@myfirstcluster-dfg21.mongodb.net/task_manager?retryWrites=true&w=majority'
+app.config["MONGO_DBNAME"] = 'fuel_management'
+app.config["MONGO_URI"] = 'mongodb+srv://NaveganteMx:Dowaine1@myfirstcluster-dfg21.mongodb.net/fuel_management?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
@@ -26,7 +26,7 @@ def add_receipt():
 def insert_receipt():
     receipts = mongo.db.receipts.find()
     receipt = request.form.to_dict()
-    vehicle = mongo.db.vehicles.find_one({"vehicle_id":receipt['equipment_id']})
+    vehicle = mongo.db.vehicles.find_one({"vehicle_id":receipt['vehicle_id']})
     if vehicle:
         mongo.db.receipts.insert_one(receipt)
         return redirect(url_for('get_receipts'))
@@ -49,7 +49,7 @@ def update_receipt(receipt_id):
     receipts.update( {'_id': ObjectId(receipt_id)},
     {
         'pump_number':request.form.get('pump_number'),
-        'equipment_id':request.form.get('equipment_id'),
+        'vehicle_id':request.form.get('vehicle_id'),
         'employee_id':request.form.get('employee_id'),
         'site_name':request.form.get('site_name'),
         'quantity': request.form.get('quantity'),
