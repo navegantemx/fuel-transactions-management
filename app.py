@@ -11,42 +11,42 @@ app.config["MONGO_URI"] = 'mongodb+srv://NaveganteMx:Dowaine1@myfirstcluster-dfg
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_tasks')
-def get_tasks():
-    return render_template('tasks.html', tasks=mongo.db.tasks.find())
+@app.route('/get_receipts')
+def get_receipts():
+    return render_template('receipts.html', receipts=mongo.db.receipts.find())
 
 
-@app.route('/add_task')
-def add_task():
-    return render_template('addtask.html',
+@app.route('/add_receipt')
+def add_receipt():
+    return render_template('addreceipt.html',
                            sites=mongo.db.sites.find())
 
 
-@app.route('/insert_task', methods=['POST'])
-def insert_task():
-    tasks = mongo.db.tasks.find()
-    task = request.form.to_dict()
-    vehicle = mongo.db.vehicles.find_one({"vehicle_id":task['equipment_id']})
+@app.route('/insert_receipt', methods=['POST'])
+def insert_receipt():
+    receipts = mongo.db.receipts.find()
+    receipt = request.form.to_dict()
+    vehicle = mongo.db.vehicles.find_one({"vehicle_id":receipt['equipment_id']})
     if vehicle:
-        mongo.db.tasks.insert_one(task)
-        return redirect(url_for('get_tasks'))
+        mongo.db.receipts.insert_one(receipt)
+        return redirect(url_for('get_receipts'))
 
     else:
         return('vehicle does not exist')
 
 
-@app.route('/edit_task/<task_id>')
-def edit_task(task_id):
-    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+@app.route('/edit_receipt/<receipt_id>')
+def edit_receipt(receipt_id):
+    the_receipt = mongo.db.receipts.find_one({"_id": ObjectId(receipt_id)})
     all_sites = mongo.db.sites.find()
-    return render_template('edittask.html', task=the_task,
+    return render_template('editreceipt.html', receipt=the_receipt,
                            sites=all_sites)
 
 
-@app.route('/update_task/<task_id>', methods=["POST"])
-def update_task(task_id):
-    tasks = mongo.db.tasks
-    tasks.update( {'_id': ObjectId(task_id)},
+@app.route('/update_receipt/<receipt_id>', methods=["POST"])
+def update_receipt(receipt_id):
+    receipts = mongo.db.receipts
+    receipts.update( {'_id': ObjectId(receipt_id)},
     {
         'pump_number':request.form.get('pump_number'),
         'equipment_id':request.form.get('equipment_id'),
@@ -55,13 +55,13 @@ def update_task(task_id):
         'quantity': request.form.get('quantity'),
         'issue_date': request.form.get('issue_date'),
     })
-    return redirect(url_for('get_tasks'))
+    return redirect(url_for('get_receipts'))
 
 
-@app.route('/delete_task/<task_id>')
-def delete_task(task_id):
-    mongo.db.tasks.remove({'_id': ObjectId(task_id)})
-    return redirect(url_for('get_tasks'))
+@app.route('/delete_receipt/<receipt_id>')
+def delete_receipt(receipt_id):
+    mongo.db.receipts.remove({'_id': ObjectId(receipt_id)})
+    return redirect(url_for('get_receipts'))
 
 
 @app.route('/get_sites')

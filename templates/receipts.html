@@ -1,30 +1,30 @@
 {% extends 'base.html'%} {% block content %}
 <div class="row">
     <ul class="collapsible" data-collapsible="accordion">
-        {% for task in tasks %}
+        {% for receipt in receipts %}
         <li>
             <div class="collapsible-header">
                 
-                <div class=" task_header col s9">
-                    <strong>{{task.site_name}}</strong> - {{task.issue_date}}
+                <div class=" receipt_header col s9">
+                    <strong>{{receipt.site_name}}</strong> - {{receipt.issue_date}}
                 </div>
                 <div class="col s3">
                     <i class="material-icons">expand_more</i>
-                    <a href="{{url_for('delete_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small">Erase</a>
-                    <a href="{{url_for('edit_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+                    <a href="{{url_for('delete_receipt', receipt_id=receipt._id)}}" class="waves-effect waves-light btn btn_small">Erase</a>
+                    <a href="{{url_for('edit_receipt', receipt_id=receipt._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                 </div>
             </div>
             <div class="collapsible-body">
                 <span>
-                    Equipment: {{task.equipment_id}} 
+                    Equipment: {{receipt.equipment_id}} 
                 </span>
                 <br>
                 <span>
-                    Employee: {{task.employee_id}} 
+                    Employee: {{receipt.employee_id}} 
                 </span>
                 <br>
                 <span>
-                    Quantity: {{task.quantity}} Gallons
+                    Quantity: {{receipt.quantity}} Gallons
                 </span>
                 
             </div>

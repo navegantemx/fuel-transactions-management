@@ -2,14 +2,14 @@
 
 <h3>Edit Transaction</h3>
 <div class="row">
-    <form action="{{ url_for('update_task', task_id=task._id) }}" method="POST" class="col s12">
+    <form action="{{ url_for('update_receipt', receipt_id=receipt._id) }}" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">location_on</i>
                 <select id="site" name="site_name">
                   <option value="" disabled selected>Select Site</option>
                   {% for cat in sites %}
-                      {% if cat.site_name == task.site_name%}
+                      {% if cat.site_name == receipt.site_name%}
                       <option value="{{cat.site_name}}" selected >{{cat.site_name}}</option>
                       {% else %}
                        <option value="{{cat.site_name}}">{{cat.site_name}}</option>
@@ -22,24 +22,24 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">local_gas_station</i>
-                <input id="pump_number" name="pump_number" type="text" class="validate" value="{{task.pump_number}}">
+                <input id="pump_number" name="pump_number" type="text" class="validate" value="{{receipt.pump_number}}">
                 <label for="icon_prefix">Pump #</label>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">local_shipping</i>
-                <input id="equipment_id" name="equipment_id" type="text" class="validate" value="{{task.equipment_id}}">
+                <input id="equipment_id" name="equipment_id" type="text" class="validate" value="{{receipt.equipment_id}}">
                 <label for="icon_prefix">Equipment ID</label>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="employee_id" name="employee_id" type="text" class="validate" value="{{task.employee_id}}">
+                <input id="employee_id" name="employee_id" type="text" class="validate" value="{{receipt.employee_id}}">
                 <label for="icon_prefix">Employee ID</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">credit_card</i>
-                <textarea name="quantity" id="quantity" class="materialize-textarea">{{task.quantity}}</textarea>
+                <textarea name="quantity" id="quantity" class="materialize-textarea">{{receipt.quantity}}</textarea>
                 <label for="icon_telephone">Quantity</label>
             </div>
         </div>
@@ -62,7 +62,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        due_date = Date.parse('{{task.due_date}}');
+        due_date = Date.parse('{{receipt.due_date}}');
         $('#due_date').pickadate('picker').set('select', due_date, { format: 'dd/mm/yyyy' }).trigger('change');
     });
 </script>
