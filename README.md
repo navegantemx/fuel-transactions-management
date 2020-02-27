@@ -9,7 +9,7 @@ A Database with several collections has been created with data for "Receipts", "
 The "Add Receipts" screen will cross reference the vehicle ID entered against the MongoDB and will display an error message if the vehicle does not exist.</p>
 <h2><a id="UX_9"></a>UX</h2>
 <p>My goal in the design of this project was to get people a friendly and easy application to capture all of their fueling transactions receipts and be able to store data about their fueling sites, pumps, employees and vehicle's fleet.</p>
-<p>A live demo can be found <a href="https://dashboard.heroku.com/apps/fuel-transactions-management/deploy/github">here</a></p>
+<p>A live demo can be found <a href="https://fuel-transactions-management.herokuapp.com/">here</a></p>
 <h2><a id="Technologies_16"></a>Technologies</h2>
 <p>HTML and CSS<br>
 Structure: Materialize <br>
@@ -36,7 +36,7 @@ The deployed site will update automatically upon new commits to the Github maste
 <p>Website Fuel Management data samples from "MegaTrak" Automated Fuel Management System. www.megatrak.com</p>
 
 <h2><a id="Acknowledgements_69"></a>Acknowledgements</h2>
-<p>The “Navbar” feature was found in MaterializeCSS.com <a href="https://materializecss.com/navbar.html/">Click here</a></p>
+<p>The “Navbar” feature was found in MaterializeCSS.com <a href="https://materializecss.com/navbar.html">Click here</a></p>
 
 <p>This is for educational use.</p>
 
