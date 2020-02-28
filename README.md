@@ -1,14 +1,14 @@
 <h2><a id="Fuel__Management_0"></a>Fuel Transactions - Management</h2>
 <p>Practical Python and Data-Centric Development Milestone Project</p>
 <hr>
-<p>This project is about a website where people can manually enter their fuel transactions receipts. A navigation bar allows moving from three different sections: A "Fuel Transactions" screen shows all captured transactions, "Add Receipts" to capture transaction's information and "Manage Sites" to adding fueling facilities to the database.<br>
+<p>This project is about a website where people can manually enter their fuel transactions receipts. A navigation bar allows moving from three different sections: A "Fuel Transactions" screen shows all captured transactions and displays Information for Site Name, Fuel Quantity, Vehicle ID and Employee ID. The"Add Receipts" screen is used to capture transaction's information and the "Manage Sites" screen for adding fueling facilities to the database.<br>
 >
 This is a MongoDB-backed Flask project that allows users to store and manipulate data records.<br>
-A Database with several collections has been created with data for "Receipts", "Sites", "Employees", "Pumps" and "Vehicles".
+A Database with several collections has been created for "Receipts", "Sites", "Employees", "Pumps" and "Vehicles".
  
-The "Add Receipts" screen will cross reference for the vehicle ID's entered, against the MongoDB database and will display an error message if the vehicle does not exist. For instance vehicle Id's: 1001, 1002 and 1003 have been added to the database if ID 1004 is entered then a "vehicle does not exist" message will be displayed</p>
+The "Add Receipts" screen will cross reference for the vehicle ID's entered, against the MongoDB database and will display an error message if the vehicle does not exist. For instance vehicle Id's: 1001, 1002 and 1003 have been added to the database, if ID# 1004 is entered, then a "vehicle does not exist" message will be displayed</p>
 <h2><a id="UX_9"></a>UX</h2>
-<p>My goal in the design of this project was to get people a friendly and easy application to capture all of their fueling transactions receipts and be able to store data about their fueling sites, pumps, employees and vehicle's fleet.</p>
+<p>My goal in the design of this project was to get people a friendly and easy application to capture their fuel transactions receipts and be able to store data about their fueling sites, pumps, employees and vehicle's fleet.</p>
 <p>A live demo can be found <a href="https://fuel-transactions-management.herokuapp.com/">here</a></p>
 <h2><a id="Technologies_16"></a>Technologies</h2>
 <p>HTML and CSS<br>
