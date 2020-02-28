@@ -2,11 +2,14 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, request
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from os import path
+if path.exists("env.py"):
+  import env 
 
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'fuel_management'
-app.config["MONGO_URI"] = 'mongodb+srv://NaveganteMx:Dowaine1@myfirstcluster-dfg21.mongodb.net/fuel_management?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 

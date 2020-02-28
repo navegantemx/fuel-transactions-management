@@ -6,7 +6,7 @@
 This is a MongoDB-backed Flask project that allows users to store and manipulate data records.<br>
 A Database with several collections has been created with data for "Receipts", "Sites", "Employees", "Pumps" and "Vehicles".
  
-The "Add Receipts" screen will cross reference the vehicle ID entered against the MongoDB and will display an error message if the vehicle does not exist.</p>
+The "Add Receipts" screen will cross reference for the vehicle ID's entered, against the MongoDB database and will display an error message if the vehicle does not exist. For instance vehicle Id's: 1001, 1002 and 1003 have been added to the database if ID 1004 is entered then a "vehicle does not exist" message will be displayed</p>
 <h2><a id="UX_9"></a>UX</h2>
 <p>My goal in the design of this project was to get people a friendly and easy application to capture all of their fueling transactions receipts and be able to store data about their fueling sites, pumps, employees and vehicle's fleet.</p>
 <p>A live demo can be found <a href="https://fuel-transactions-management.herokuapp.com/">here</a></p>
