@@ -13,3 +13,12 @@
 .nav-wrapper {
     background-color: blue !important; 
 }
+
+.brand-logo {
+    margin-left: 650px;
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+}
