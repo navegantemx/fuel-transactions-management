@@ -3,6 +3,11 @@
 <div class="row">
 
     <h4>Fueling Sites</h4>
+    <div class="row">
+    <a href="{{url_for('add_site')}}" class="waves-effect waves-light btn">
+        <i class="material-icons right">playlist_add</i>Add a new Site
+    </a>
+    </div>
     <ul class="collapsible" data-collapsible="accordion">
         {% for site in sites %}
         <li>
@@ -19,9 +24,5 @@
 
     </ul>
 </div>
-<div class="row">
-    <a href="{{url_for('add_site')}}" class="waves-effect waves-light btn">
-        <i class="material-icons right">playlist_add</i>New Site
-    </a>
-</div>
+
 {% endblock %}

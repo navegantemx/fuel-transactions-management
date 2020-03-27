@@ -1,0 +1,26 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="row">
+
+    <h4>Vehicles</h4> 
+    <div class="row">
+    <a href="{{url_for('add_vehicle')}}" class="waves-effect waves-light btn">
+        <i class="material-icons right">playlist_add</i>New Vehicle
+    </a>
+    </div>
+    <ul class="collapsible" data-collapsible="accordion">
+        {% for vehicle in vehicles %}
+        <li>
+            <div class="collapsible-header">
+                <a href="{{url_for('delete_vehicle', vehicle_id=vehicle._id)}}" class="waves-effect waves-light btn btn_small">Del</a>
+                
+                <div class="receipt_header">
+                    <strong>{{vehicle.vehicle_id}}</strong>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
+{% endblock %}

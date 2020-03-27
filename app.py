@@ -114,6 +114,30 @@ def add_site():
     return render_template('addsite.html')
 
 
+@app.route('/get_vehicles')
+def get_vehicles():
+    return render_template('vehicles.html',
+                           vehicles=mongo.db.vehicles.find())
+
+
+@app.route('/delete_vehicle/<vehicle_id>')
+def delete_vehicle(vehicle_id):
+    mongo.db.vehicles.remove({'_id': ObjectId(vehicle_id)})
+    return redirect(url_for('get_vehicles'))
+
+
+@app.route('/insert_vehicle', methods=['POST'])
+def insert_vehicle():
+    vehicle_doc = {'vehicle_id': request.form.get('vehicle_id')}
+    mongo.db.vehicles.insert_one(vehicle_doc)
+    return redirect(url_for('get_vehicles'))
+
+
+@app.route('/add_vehicle')
+def add_vehicle():
+    return render_template('addvehicle.html')
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

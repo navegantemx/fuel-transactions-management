@@ -22,24 +22,24 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">local_gas_station</i>
-                <input id="pump_number" name="pump_number" type="text" class="validate" value="{{receipt.pump_number}}">
+                <input id="pump_number" name="pump_number" type="text" class="validate" value="{{receipt.pump_number}}" required>
                 <label for="icon_prefix">Pump #</label>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">local_shipping</i>
-                <input id="vehicle_id" name="vehicle_id" type="text" class="validate" value="{{receipt.vehicle_id}}">
+                <input id="vehicle_id" name="vehicle_id" type="text" class="validate" value="{{receipt.vehicle_id}}" required>
                 <label for="icon_prefix">Vehicle ID</label>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">person</i>
-                <input id="employee_id" name="employee_id" type="text" class="validate" value="{{receipt.employee_id}}">
+                <input id="employee_id" name="employee_id" type="text" class="validate" value="{{receipt.employee_id}}" required>
                 <label for="icon_prefix">Employee ID</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">credit_card</i>
-                <textarea name="quantity" id="quantity" class="materialize-textarea">{{receipt.quantity}}</textarea>
+                <input type="number" {{receipt.quantity}} placeholder="# of Gallons:" required>
                 <label for="icon_telephone">Quantity</label>
             </div>
         </div>
