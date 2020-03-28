@@ -33,7 +33,7 @@ def add_receipt():
 
 @app.route('/insert_receipt', methods=['POST'])
 def insert_receipt():
-    receipts = mongo.db.receipts.find()
+    receipt = mongo.db.receipts.find()
     receipt = request.form.to_dict()
     vehicle = mongo.db.vehicles.find_one({"vehicle_id": receipt['vehicle_id']})
     if vehicle:
