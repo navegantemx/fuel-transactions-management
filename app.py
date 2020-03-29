@@ -10,7 +10,7 @@ if path.exists("env.py"):
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'fuel_management'
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
-app.config["FLASK_DEBUG"] = True
+app.config["FLASK_DEBUG"] = False
 app.config["SECRET_KEY"] = b'_5#y2L"F4Q8z\n\xec]/'
 
 mongo = flask_pymongo.PyMongo(app)
